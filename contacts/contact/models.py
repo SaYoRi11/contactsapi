@@ -1,4 +1,3 @@
-
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -30,6 +29,7 @@ class Email(models.Model):
         return self.email
 
 class Phone_no(models.Model):
+    country_code = models.CharField(max_length=10, default='+1')
     phone_number = models.CharField(max_length=20)
     contact = models.ForeignKey(Contact, on_delete=models.CASCADE, related_name='phone_nos')
     
