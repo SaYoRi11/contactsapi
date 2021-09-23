@@ -30,7 +30,7 @@ class Email(models.Model):
 
 class Phone_no(models.Model):
     country_code = models.CharField(max_length=10, default='+1')
-    phone_number = models.CharField(max_length=20)
+    phone_number = models.BigIntegerField()
     contact = models.ForeignKey(Contact, on_delete=models.CASCADE, related_name='phone_nos')
     
     def __str__(self):
