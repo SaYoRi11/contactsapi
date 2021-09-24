@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Contact, Email, Phone_no
+from drf_writable_nested import WritableNestedModelSerializer
 
 class EmailSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,7 +12,7 @@ class PhoneSerializer(serializers.ModelSerializer):
         model = Phone_no
         fields = ['country_code','phone_number', 'label']
 
-class ContactSerializer(serializers.ModelSerializer):
+class ContactSerializer(WritableNestedModelSerializer, serializers.ModelSerializer):
     emails = EmailSerializer(many=True)
     phone_nos = PhoneSerializer(many=True)
 
@@ -27,5 +28,5 @@ class ContactSerializer(serializers.ModelSerializer):
             Email.objects.create(contact=contact, **email_data)
         for phone_data in phone_nos_data:
             Phone_no.objects.create(contact=contact, **phone_data)
-        return contact
+        return contact 
 
