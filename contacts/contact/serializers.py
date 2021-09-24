@@ -18,7 +18,7 @@ class ContactSerializer(WritableNestedModelSerializer, serializers.ModelSerializ
 
     class Meta:
         model = Contact
-        fields = ['id','first_name', 'nick_name', 'last_name', 'available', 'emails', 'phone_nos']
+        fields = ['id','first_name', 'last_name', 'nick_name',  'available', 'emails', 'phone_nos']
 
     def create(self, validated_data):
         phone_nos_data = validated_data.pop('phone_nos')
