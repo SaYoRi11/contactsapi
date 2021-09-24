@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-(=!*r2bb=_6%es9p@)2%-xr$1q%y4xun(e(0@mc#f1rjy+v$3q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost','b238-49-244-11-158.ngrok.io']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','24db-49-244-51-20.ngrok.io']
 
 
 # Application definition
@@ -40,12 +40,14 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'rest_framework',
     'contact.apps.ContactConfig',
-    'django_filters'
+    'django_filters',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -135,3 +137,8 @@ REST_FRAMEWORK = {
         'rest_framework.filters.SearchFilter',
     ),
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
